@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="content/css" />
+    <script type="text/javascript" src="scripts/modernizr"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <span class="brand">Events Demo</span>
+                <ul class="nav">
+                    <li><a href="#" data-bind="click: loadEvents">All</a></li>
+                    <li><a href="#" data-bind="click: loadUpcomingEvents">Upcoming</a></li>
+                    <li><a href="#" data-bind="click: loadPastEvents">Past</a></li>
+                    <li><a id="btnNew" data-toggle="modal" data-target="#myModal" href="#">New</a></li>
+                </ul>
+                <div class="span7">
+
+                    <div class="input-append pull-right" style="margin-top: 5px">
+                        <input id="searchbox" type="text" placeholder="Search" />
+                        <button class="btn" type="button" data-bind="click: searchEvents">Go!</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main container">
+        <div class="eventlist">
+            <ul class="media-list" data-bind="template: {name: 'media-item-template', foreach:events}">
+            </ul>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Create New Event</h3>
+        </div>
+        <div class="modal-body">
+            <p>One fine body…</p>
+        </div>
+        <div class="modal-footer">            
+            <a href="#" class="btn btn-primary">Save changes</a>
+        </div>
+    </div>
+
+    <script type="text/html" id="media-item-template">
+        <li class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object" src="Content/images/placeholder.gif" alt="">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading" data-bind="text: Title"></h4>
+                <span class="media-sub-heading" data-bind="text: $root.formatDate(StartDateTime)"></span>
+                <br />
+                <span class="media-sub-heading" style="color: #04C" data-bind="text: Address"></span>
+                <br />
+                <!--ko text:Description-->
+                <!--/ko-->
+            </div>
+        </li>
+    </script>
+    <script type="text/javascript" src="scripts/js"></script>
+</body>
+</html>
